@@ -1,0 +1,37 @@
+function playGame(playerChoice) {
+    // List of choices for the game
+    var choices = ['rock', 'paper', 'scissors'];
+    // Randomly select the computer's choice
+    var computerChoice = choices[Math.floor(Math.random() * 3)];
+
+    // Display the player's choice
+    document.getElementById('user-choice').textContent = playerChoice;
+
+    // Display the computer's choice
+    document.getElementById('computer-choice').textContent = computerChoice;
+
+    // Initialize variables for result text and color
+    var resultText = "";
+    var resultColor = "";
+
+    // Check the game result
+    if (playerChoice === computerChoice) {
+        resultText = "It's a draw! You both chose " + playerChoice + ".";
+        resultColor = "#FFD700"; // Gold for draw
+    } else if (
+        (playerChoice === 'rock' && computerChoice === 'scissors') ||
+        (playerChoice === 'paper' && computerChoice === 'rock') ||
+        (playerChoice === 'scissors' && computerChoice === 'paper')
+    ) {
+        resultText = "You win! " + playerChoice + " beats " + computerChoice + ".";
+        resultColor = "#32CD32"; // Lime Green for win
+    } else {
+        resultText = "You lose! " + computerChoice + " beats " + playerChoice + ".";
+        resultColor = "#FF6347"; // Tomato for loss
+    }
+
+    // Update the result text and color on the webpage
+    var resultDisplay = document.getElementById('result-text');
+    resultDisplay.textContent = resultText;
+    resultDisplay.style.color = resultColor;
+}
